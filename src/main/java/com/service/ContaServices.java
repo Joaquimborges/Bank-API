@@ -1,8 +1,6 @@
 package com.service;
 
 import com.models.Conta;
-import com.models.ContaCorrente;
-import com.models.ContaPoupanca;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

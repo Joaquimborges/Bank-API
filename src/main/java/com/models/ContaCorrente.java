@@ -2,25 +2,14 @@ package com.models;
 
 public class ContaCorrente extends Conta {
 
-    private String nome;
-
-    public String getNome() {
-        return nome;
+    public ContaCorrente() {
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public ContaCorrente(String nome, String numero, String agencia, String tipoDeConta, double saldo, boolean especial, double chequeEspecial) {
+        super(nome, numero, agencia, tipoDeConta, saldo, especial, chequeEspecial);
     }
 
-    public ContaCorrente(String numero, String agencia, String nome) {
-        super(numero, agencia);
-        this.nome = nome;
-    }
 
-    public ContaCorrente(String numero, String agencia, double saldo, boolean especial, String nome) {
-        super(numero, agencia, saldo, especial);
-        this.nome = nome;
-    }
 }
 
 

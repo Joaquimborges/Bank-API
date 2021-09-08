@@ -2,24 +2,21 @@ package com.models;
 
 public class Conta {
 
+    private String nome;
     private String numero;
     private String agencia;
+    private String tipoDeConta;
     private double saldo;
     private boolean especial;
     private double chequeEspecial;
+    private double investimento;
 
-    public Conta(String numero, String agencia, double saldo, boolean especial) {
+    public String getNome() {
+        return nome;
     }
 
-    public Conta() {
-    }
-
-    public double getChequeEspecial() {
-        return chequeEspecial;
-    }
-
-    public void setChequeEspecial(double chequeEspecial) {
-        this.chequeEspecial = chequeEspecial;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public String getNumero() {
@@ -28,6 +25,14 @@ public class Conta {
 
     public void setNumero(String numero) {
         this.numero = numero;
+    }
+
+    public String getTipoDeConta() {
+        return tipoDeConta;
+    }
+
+    public void setTipoDeConta(String tipoDeConta) {
+        this.tipoDeConta = tipoDeConta;
     }
 
     public String getAgencia() {
@@ -54,15 +59,41 @@ public class Conta {
         this.especial = especial;
     }
 
-    public Conta(String numero, String agencia) {
-        this.numero = numero;
-        this.saldo = saldo;
-        this.agencia = agencia;
+    public double getChequeEspecial() {
+        return chequeEspecial;
     }
 
-    public Conta(String numero, String agencia, double saldo, boolean especial, double chequeEspecial) {
+    public void setChequeEspecial(double chequeEspecial) {
+        this.chequeEspecial = chequeEspecial;
+    }
+
+    public double getInvestimento() {
+        return investimento;
+    }
+
+    public void setInvestimento(double investimento) {
+        this.investimento = investimento;
+    }
+
+    public Conta() {
+    }
+
+    public Conta(String nome, String numero, String agencia, String tipoDeConta, double saldo, boolean especial, double chequeEspecial, double investimento) {
+        this.nome = nome;
         this.numero = numero;
         this.agencia = agencia;
+        this.tipoDeConta = tipoDeConta;
+        this.saldo = saldo;
+        this.especial = especial;
+        this.chequeEspecial = chequeEspecial;
+        this.investimento = investimento;
+    }
+
+    public Conta(String nome, String numero, String agencia, String tipoDeConta, double saldo, boolean especial, double chequeEspecial) {
+        this.nome = nome;
+        this.numero = numero;
+        this.agencia = agencia;
+        this.tipoDeConta = tipoDeConta;
         this.saldo = saldo;
         this.especial = especial;
         this.chequeEspecial = chequeEspecial;
@@ -71,11 +102,14 @@ public class Conta {
     @Override
     public String toString() {
         return "Conta{" +
-                "numero='" + numero + '\'' +
+                "nome='" + nome + '\'' +
+                ", numero='" + numero + '\'' +
                 ", agencia='" + agencia + '\'' +
+                ", tipoDeConta='" + tipoDeConta + '\'' +
                 ", saldo=" + saldo +
                 ", especial=" + especial +
                 ", chequeEspecial=" + chequeEspecial +
+                ", investimento=" + investimento +
                 '}';
     }
 }
