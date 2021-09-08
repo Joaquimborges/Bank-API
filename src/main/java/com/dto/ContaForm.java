@@ -1,6 +1,10 @@
-package com.models;
+package com.dto;
 
-public class Conta {
+import com.models.Conta;
+
+import java.io.Serializable;
+
+public class ContaForm implements Serializable {
 
     private String nome;
     private String numero;
@@ -9,10 +13,6 @@ public class Conta {
     private double saldo;
     private boolean especial;
     private double chequeEspecial;
-    private double investimento;
-
-    public Conta(String nome, String numero, String agencia, String tipoDeConta) {
-    }
 
     public String getNome() {
         return nome;
@@ -30,20 +30,20 @@ public class Conta {
         this.numero = numero;
     }
 
-    public String getTipoDeConta() {
-        return tipoDeConta;
-    }
-
-    public void setTipoDeConta(String tipoDeConta) {
-        this.tipoDeConta = tipoDeConta;
-    }
-
     public String getAgencia() {
         return agencia;
     }
 
     public void setAgencia(String agencia) {
         this.agencia = agencia;
+    }
+
+    public String getTipoDeConta() {
+        return tipoDeConta;
+    }
+
+    public void setTipoDeConta(String tipoDeConta) {
+        this.tipoDeConta = tipoDeConta;
     }
 
     public double getSaldo() {
@@ -70,18 +70,10 @@ public class Conta {
         this.chequeEspecial = chequeEspecial;
     }
 
-    public double getInvestimento() {
-        return investimento;
+    public ContaForm() {
     }
 
-    public void setInvestimento(double investimento) {
-        this.investimento = investimento;
-    }
-
-    public Conta() {
-    }
-
-    public Conta(String nome, String numero, String agencia, String tipoDeConta, double saldo, boolean especial, double chequeEspecial, double investimento) {
+    public ContaForm(String nome, String numero, String agencia, String tipoDeConta, double saldo, boolean especial, double chequeEspecial) {
         this.nome = nome;
         this.numero = numero;
         this.agencia = agencia;
@@ -89,18 +81,10 @@ public class Conta {
         this.saldo = saldo;
         this.especial = especial;
         this.chequeEspecial = chequeEspecial;
-        this.investimento = investimento;
     }
 
-
-    public Conta(String nome, String numero, String agencia, String tipoDeConta, double saldo, boolean especial, double chequeEspecial) {
-        this.nome = nome;
-        this.numero = numero;
-        this.agencia = agencia;
-        this.tipoDeConta = tipoDeConta;
-        this.saldo = saldo;
-        this.especial = especial;
-        this.chequeEspecial = chequeEspecial;
+    public Conta converte() {
+        return new Conta(nome, agencia, numero, tipoDeConta, saldo, especial, chequeEspecial);
     }
 
 

@@ -23,8 +23,9 @@ public class ContaServices {
 
 
 
-    public static boolean criarConta(Conta conta) {
-       return contas.add(conta);
+    public Conta criarConta(Conta conta) {
+       contas.add(conta);
+        return conta;
     }
 
 
