@@ -76,6 +76,19 @@ public class ContaServices {
         return null;
     }
 
+    public static Double fazerInvestimento(String numero, String agencia, double valor) {
+        for (Conta conta : contas) {
+            if (conta.getNumero().equals(numero) && conta.getAgencia().equals(agencia)) {
+                if (conta.getSaldo() > valor) {
+                    double retirarSaldo = conta.getSaldo() - valor;
+                    return conta.getInvestimento() + retirarSaldo;
+                }
+
+            }
+        }
+        return null;
+    }
+
 
     private static double auxTransfer(Conta conta, Double valor){
         return conta.getSaldo() + valor;
