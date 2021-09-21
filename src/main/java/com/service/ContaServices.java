@@ -1,26 +1,17 @@
 package com.service;
 
 import com.models.Conta;
+import lombok.Setter;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 
 @Service
+@Setter
 public class ContaServices {
-    private static List<Conta> contas  = new ArrayList<>();
-
-
-    public static void setContas(List<Conta> contas) {
-        ContaServices.contas = contas;
-    }
-
-
-    public ContaServices() {
-    }
-
+    private List<Conta> contas  = new ArrayList<>();
 
 
     public Conta criarConta(Conta conta) {
@@ -29,17 +20,17 @@ public class ContaServices {
     }
 
 
-    public static String infoConta(String numero, String agencia) {
+    public Conta infoConta(String numero, String agencia) {
         for (Conta contaData : contas) {
             if (contaData.getNumero().equals(numero) && contaData.getAgencia().equals(agencia)) {
-                return contaData.toString();
+                return contaData;
             }
         }
         return null;
 
     }
 
-    public static Double cosultarSaldo(String numero, String agencia) {
+    public Double cosultarSaldo(String numero, String agencia) {
         for (Conta conta : contas) {
             if (conta.getNumero().equals(numero) && conta.getAgencia().equals(agencia)) {
                 return conta.getSaldo();
@@ -49,7 +40,7 @@ public class ContaServices {
     }
 
 
-    public static Double realizarSaque(String numero, String agencia, Double valor) {
+    public Double realizarSaque(String numero, String agencia, Double valor) {
         for (Conta conta : contas) {
             if (conta.getNumero().equals(numero) && conta.getAgencia().equals(agencia)) {
                 if (valor < conta.getSaldo()) {
@@ -57,8 +48,9 @@ public class ContaServices {
                 } else {
                     if (conta.getNumero().equals(numero) && conta.getAgencia().equals(agencia) && conta.isEspecial()) {
                         double valorSaque = conta.getSaldo() + conta.getChequeEspecial();
-                        if (valor < valorSaque) {
-                            return conta.getSaldo() - valor;
+                        if (valor <
+                                valorSaque) {
+                        return conta.getSaldo() - valor;
                         }
                     }
                 }
@@ -67,7 +59,7 @@ public class ContaServices {
         return null;
     }
 
-    public static Double fazerDeposito(String numero, String agencia, Double valor) {
+    public Double fazerDeposito(String numero, String agencia, Double valor) {
         for (Conta conta : contas) {
             if (conta.getNumero().equals(numero) && conta.getAgencia().equals(agencia)) {
                 return conta.getSaldo() + valor;
@@ -76,12 +68,13 @@ public class ContaServices {
         return null;
     }
 
-    public static Double fazerInvestimento(String numero, String agencia, double valor) {
+    public Double fazerInvestimento(String numero, String agencia, Double valor) {
         for (Conta conta : contas) {
             if (conta.getNumero().equals(numero) && conta.getAgencia().equals(agencia)) {
                 if (conta.getSaldo() > valor) {
                     double retirarSaldo = conta.getSaldo() - valor;
                     return conta.getInvestimento() + retirarSaldo;
+
                 }
 
             }
@@ -90,28 +83,22 @@ public class ContaServices {
     }
 
 
-    private static double auxTransfer(Conta conta, Double valor){
+    private double auxTransfer(Conta conta, Double valor){
         return conta.getSaldo() + valor;
     }
 
 
-    public static Double realizarTransferencia (String numero, String agencia, Double valor){
+    public Double realizarTransferencia (String numero, String agencia, Double valor){
         for (Conta conta : contas) {
             if (conta.getNumero().equals(numero) && conta.getAgencia().equals(agencia)) {
-                return ContaServices.auxTransfer(conta, valor);
+                return auxTransfer(conta, valor);
             }
         }
         return null;
     }
 
-    public static HashMap<Integer, Conta> mostrarContas() {
-        HashMap<Integer, Conta> contaHashMap = new HashMap<>();
-        Integer contador = 0;
-        for (Conta conta : contas) {
-            contador++;
-            contaHashMap.put(contador ,conta);
-        }
-        return contaHashMap;
+    public List< Conta> mostrarContas() {
+        return contas;
     }
 
 

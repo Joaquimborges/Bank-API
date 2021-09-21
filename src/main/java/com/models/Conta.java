@@ -12,6 +12,10 @@ public class Conta {
     private double investimento;
 
     public Conta(String nome, String numero, String agencia, String tipoDeConta) {
+        this.nome = nome;
+        this.numero = numero;
+        this.agencia = agencia;
+        this.tipoDeConta = tipoDeConta;
     }
 
     public String getNome() {
@@ -103,5 +107,17 @@ public class Conta {
         this.chequeEspecial = chequeEspecial;
     }
 
-
+    @Override
+    public String toString() {
+        return "Conta{" +
+                "nome: '" + nome + '\n' +
+                ", numero: '" + numero + '\n' +
+                ", agencia: '" + agencia + '\n' +
+                ", tipoDeConta: '" + tipoDeConta + '\n' +
+                ", saldo: " + saldo + '\n' +
+                ", especial: " + especial + '\n' +
+                ", chequeEspecial: " + chequeEspecial + '\n' +
+                ", investimento: " + investimento +
+                '}';
+    }
 }
